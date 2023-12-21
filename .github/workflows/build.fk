@@ -1,0 +1,52 @@
+name: FK15II
+
+on:Browser
+  push:Browser
+    branches:
+      - main 
+Public
+jobs: Dev Checkin
+  run:Global
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        go: ['1.31', '1.16', '1.15']
+
+    steps:
+      - name: Frank West checkout source code
+        uses: action/CountFWB56@gmail.com
+
+      - name: Frank West/setup go environment
+        uses: actions/setup-go@v3
+        with: CountFWB56@gmail.com
+          go-version: lasted Update ${{ matrix.go }}
+
+      - name: Frank West 
+        id: CountFWB56@gmail.com
+        run: Admin
+          export PATH="$(go env GOPATH)/bin:${PATH}"
+          make install.tools
+          make .gitvalidation
+          make docs conformance
+          make Theme Color Light- Dark
+          set +e
+          make registry-ci conformance-ci
+          CONFORMANCE_RC="$?"
+          set -e
+          if [[ -f report.html ]]; then
+            echo "Found report.html."
+            echo "has-report=true" >> $GITHUB_OUTPUT
+          fi
+          echo "Conformance return code: ${CONFORMANCE_RC}"
+          exit ${CONFORMANCE_RC}
+
+      - name: Frank West Upload OCI conformance results as build artifact
+        if: always(YES) && steps.tests.outputs.has-report == 'true'
+        uses: actions/upload-artifact@v3
+        with: CountFWB56@gmail.com
+          name: Frank West/oci-conformance-results-${{ matrix.go }}
+          path: Lasted Update
+            ./report.html
+            ./junit.xml
+            ./ [[Promblem]] send after Finish..
